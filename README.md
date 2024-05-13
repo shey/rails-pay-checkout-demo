@@ -32,13 +32,8 @@ app/controllers/checkouts_controller.rb
 app/services/payment_succeded_handler.rb
 
 ### Related Articles
-
-https://github.com/pay-rails/pay/blob/main/docs/1_installation.md
-
-https://github.com/pay-rails/pay/blob/main/docs/1_installation.md
-
-https://github.com/pay-rails/pay/blob/main/docs/stripe/8_stripe_checkout.md#how-to-use-stripe-checkout-with-pay
-
-https://github.com/pay-rails/pay/blob/main/docs/7_webhooks.md
-
-https://github.com/pay-rails/pay/blob/main/docs/stripe/5_webhooks.md
+1. https://github.com/pay-rails/pay/blob/main/docs/1_installation.md
+1. https://github.com/pay-rails/pay/blob/main/docs/1_installation.md
+1. https://github.com/pay-rails/pay/blob/main/docs/stripe/8_stripe_checkout.md#how-to-use-stripe-checkout-with-pay
+1. https://github.com/pay-rails/pay/blob/main/docs/7_webhooks.md
+1. https://github.com/pay-rails/pay/blob/main/docs/stripe/5_webhooks.md
