@@ -8,6 +8,15 @@
 1. config/initializers/pay.rb
 1. app/models/user.rb
 
+#### Pay Tables and The Work You Don't Have To Do
+1. bin/rails pay:install:migrations
+  * pay_customers
+  * pay_subscriptions
+  * pay_charges
+  * pay_webhooks
+  * pay_merchants
+  * pay_payment_methods
+
 #### Plans and Prices
 1. app/models/plan.rb
 
