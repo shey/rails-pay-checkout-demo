@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Toronto Rails</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+  </head>
+  <body class="flex flex-col min-h-screen bg-blue-100">
+    <%= render "layouts/common/navigation" %>
+    <main class="container mx-auto mt-4 px-2 flex flex-grow justify-center">
+      <%= yield %>
+    </main>
+    <%= render "layouts/common/footer"%>
+  </body>
+</html>
