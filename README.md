@@ -36,15 +36,15 @@ Plans are a deprecated concept. Stripe has introduced [products](https://dashboa
 #### stripe-cli
 The [stripe-cli](https://docs.stripe.com/stripe-cli) is used to trigger events to test the webhook integration (locally). Download, install, and setup stripe-cli to work with your account.
 
+#### Components Involved
+1. app/services/payment_succeded_handler.rb
+1. config/initializers/pay.rb
+
 #### Payment Succeed
 Using the "stripe.invoice.payment_succeeded" as the safer event.
-TODO: explain why.
 
-#### Triggering an Event With the CLI
-
-#### Components Involved
-app/services/payment_succeded_handler.rb
-config/initializers/pay.rb
+#### Running the CLI
+Run `stripe listen --forward-to localhost:3000/pay/webhooks/stripe`
 
 ### Related Articles
 1. [stripe-checkout](https://github.com/pay-rails/pay/blob/3f860ad490ce91b1b1d0ed3d11147d163b9fda80/docs/stripe/8_stripe_checkout.md)
