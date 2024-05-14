@@ -1,21 +1,22 @@
-<section class="p-2 max-w-screen-xl md:max-w-screen-md mx-auto">
-  <div class="flex flex-col gap-2 text-justify">
-    <div>
-      <h1 class="font-extrabold text-lg leading-loose">
-        Welcome to Toronto Rails
-      </h1>
+<section class="p-2 max-w-screen-xl md:max-w-screen-md mx-auto mt-10">
+  <div class="text-center mb-8">
+    <h2 class="text-2xl font-bold">Pricing Plans</h2>
+  </div>
+  <div class="grid gap-6 md:grid-cols-3">
+    <!-- Card 1 -->
+    <div class="border border-gray-200 rounded-lg shadow p-6 text-justify">
+      <h3 class="text-lg font-semibold mb-4 text-center">Hobby</h3>
+      <button class="bg-blue-300 hover:bg-pink-300 text-white py-2 px-4 rounded">Get Started</button>
     </div>
-    <div>
-      <p class="leading-relaxed">
-        Toronto Rails is a new community for Ruby on Rails developers in Toronto. Connect, share, and grow with your fellow Toronto Rails Developers.
-      </p>
-      <p class="leading-relaxed pt-5">
-        <%=
-          link_to 'Request a Slack Invite',
-          "https://docs.google.com/forms/d/1wKo54fWoezqrtk7PAtLlD5EYnRMDEPGCVH6ouMO1mFQ/",
-          class: "bg-blue-300 hover:bg-pink-300 text-white py-2 px-2 rounded mt-4"
-        %>
-      </p>
+    <!-- Card 2 -->
+    <div class="border border-gray-200 rounded-lg shadow p-6 text-justify">
+      <h3 class="text-lg font-semibold mb-4 text-center">Professional</h3>
+      <button class="bg-blue-300 hover:bg-pink-300 text-white py-2 px-4 rounded">Get Started</button>
+    </div>
+    <!-- Card 3 -->
+    <div class="border border-gray-200 rounded-lg shadow p-6 text-justify">
+      <h3 class="text-lg font-semibold mb-4 text-center">Enterprise</h3>
+      <button class="bg-blue-300 hover:bg-pink-300 text-white py-2 px-4 rounded">Get Started</button>
     </div>
   </div>
 </section>
