@@ -1,4 +1,4 @@
-class CheckoutsController  < ApplicationController
+class CheckoutsController < ApplicationController
   before_action :set_price_id, only: %i[show]
 
   def show
@@ -6,7 +6,6 @@ class CheckoutsController  < ApplicationController
   end
 
   private
-  attr_reader :user
 
   def stripe_checkout_url
     StripeCheckout.new(user, @stripe_price_id).url
@@ -23,10 +22,9 @@ class CheckoutsController  < ApplicationController
 
   def plan_id_mapping
     {
-      "hobby" => "price_1Ow66SAWnWpxHPD5qEZoUi4O",
-      "professional" => "price_1Ow66SAWnWpxHPD5K270wTji",
-      "enterprise" => "price_1Ow66RAWnWpxHPD5xV9xUCyD"
+      hobby: "price_1Ow66SAWnWpxHPD5qEZoUi4O",
+      professional: "price_1Ow66SAWnWpxHPD5K270wTji",
+      enterprise: "price_1Ow66RAWnWpxHPD5xV9xUCyD"
     }
   end
-
 end

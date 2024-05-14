@@ -31,9 +31,7 @@ Plans is a deprecated concept. They've introduced [products](https://dashboard.s
 1. app/views/static/home.html.erb
 1. app/services/stripe_checkout.rb
 1. config/environments/development.rb
-
-#### The Checkouts Controller
-app/controllers/checkouts_controller.rb
+1. app/controllers/checkouts_controller.rb
 
 ### The One Webhook Handler
 app/services/payment_succeded_handler.rb
