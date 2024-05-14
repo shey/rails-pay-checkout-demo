@@ -17,10 +17,10 @@ class CheckoutsController < ApplicationController
 
   def set_price_id
     plan_name = params[:plan]
-    @stripe_price_id = plan_id_mapping[plan_name]
+    @stripe_price_id = plan_price_id_mapping[plan_name]
   end
 
-  def plan_id_mapping
+  def plan_price_id_mapping
     {
       hobby: "price_1Ow66SAWnWpxHPD5qEZoUi4O",
       professional: "price_1Ow66SAWnWpxHPD5K270wTji",
