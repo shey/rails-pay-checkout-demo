@@ -17,7 +17,7 @@ class CheckoutsController < ApplicationController
 
   def set_price_id
     plan_name = params[:plan]
-    @stripe_price_id = plan_price_id_mapping[plan_name]
+    @stripe_price_id = plan_price_id_mapping[plan_name.to_sym]
   end
 
   def plan_price_id_mapping
