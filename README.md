@@ -3,6 +3,8 @@
 ## Using Pay with Stripe
 **Stripe Checkout,** stripe hosts the payments page.
 
+![pricing plans](docs/pricing-plans.png)
+
 ### Getting Started: Models and Config
 1. config/initializers/stripe.rb
 1. config/initializers/pay.rb
@@ -37,6 +39,8 @@ The [stripe-cli](https://docs.stripe.com/stripe-cli) is used to trigger events a
 #### Setup Products and Set Prices
 Plans are a deprecated concept. Stripe has introduced [products](https://dashboard.stripe.com/products) and prices. The "price_id" is the relevant field, and it's what is used to generate the checkout url (to direct the user to).
 
+![Stripe Product Catalogue Page](docs/product-catalogue.png)
+
 #### Running the CLI
 Run `stripe listen --forward-to localhost:3000/pay/webhooks/stripe`
 
@@ -53,6 +57,8 @@ Run `stripe listen --forward-to localhost:3000/pay/webhooks/stripe`
 
 #### After checkout
 Stripe redirects back to 'success_url' with 'session_id' query param from stripe.
+
+![stripe events](docs/events.png)
 
 #### Payment Succeed
 Using the "stripe.invoice.payment_succeeded" to update user, etc.
