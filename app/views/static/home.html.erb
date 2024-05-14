@@ -4,19 +4,19 @@
   </div>
   <div class="grid gap-6 md:grid-cols-3">
     <!-- Card 1 -->
-    <div class="border border-gray-200 rounded-lg shadow p-6 text-justify">
+    <div class="border border-gray-200 rounded-lg shadow p-3 text-justify">
       <h3 class="text-lg font-semibold mb-4 text-center">Hobby</h3>
-      <button class="bg-blue-300 hover:bg-pink-300 text-white py-2 px-4 rounded">Get Started</button>
+      <%= link_to 'Get Started', checkouts_path(plan: "hobby"), class: "bg-blue-300 hover:bg-pink-300 text-white py-2 px-4 rounded", data: { turbo: false } %>
     </div>
     <!-- Card 2 -->
-    <div class="border border-gray-200 rounded-lg shadow p-6 text-justify">
+    <div class="border border-gray-200 rounded-lg shadow p-3 text-justify">
       <h3 class="text-lg font-semibold mb-4 text-center">Professional</h3>
-      <button class="bg-blue-300 hover:bg-pink-300 text-white py-2 px-4 rounded">Get Started</button>
+      <%= link_to 'Get Started', checkouts_path(plan: "professional"), class: "bg-blue-300 hover:bg-pink-300 text-white py-2 px-4 rounded", data: { turbo: false } %>
     </div>
     <!-- Card 3 -->
-    <div class="border border-gray-200 rounded-lg shadow p-6 text-justify">
+    <div class="border border-gray-200 rounded-lg shadow p-3 text-justify">
       <h3 class="text-lg font-semibold mb-4 text-center">Enterprise</h3>
-      <button class="bg-blue-300 hover:bg-pink-300 text-white py-2 px-4 rounded">Get Started</button>
+      <%= link_to 'Get Started', checkouts_path(plan: "enterprise"), class: "bg-blue-300 hover:bg-pink-300 text-white py-2 px-4 rounded", data: { turbo: false } %>
     </div>
   </div>
 </section>

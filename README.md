@@ -28,6 +28,7 @@ Easiest to configure via the [instructions](https://github.com/pay-rails/pay/blo
 Plans is a deprecated concept. They've introduced [products](https://dashboard.stripe.com/products) and prices. The "price_id" is the relevant field, and it's what is used to generate the checkout url (to direct the user to).
 
 #### Checkout URL (Stripe)
+1. app/views/static/home.html.erb
 1. app/services/stripe_checkout.rb
 1. config/environments/development.rb
 
