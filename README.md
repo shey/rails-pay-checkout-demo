@@ -23,20 +23,18 @@ By including pay_customer in the User model, the gem internally associates a Use
 #### Credentials
 Easiest to configure via the [instructions](https://github.com/pay-rails/pay/blob/main/docs/2_configuration.md#configuring-pay) described in the docs. Once you've saved the credentials, you can verify the setup by running `User.first.payment_processor.customer` in rails console.
 
-### Plans
-Plans is a deprecated concept. They've introduced products and prices. The "price_id"
-is the relevant field.
+### Checkouts
+#### Plans
+Plans is a deprecated concept. They've introduced [products](https://dashboard.stripe.com/products) and prices. The "price_id" is the relevant field, and it's what is used to generate the checkout url (to direct the user to).
 
-### The One (and a half) Controller
+#### The One Controller
 app/controllers/checkouts_controller.rb
 
-### Success, Redirects, and Syncing
 
 ### The One Webhook
 app/services/payment_succeded_handler.rb
 
 ### Related Articles
-1. https://github.com/pay-rails/pay/blob/main/docs/1_installation.md
 1. https://github.com/pay-rails/pay/blob/main/docs/1_installation.md
 1. https://github.com/pay-rails/pay/blob/main/docs/stripe/8_stripe_checkout.md#how-to-use-stripe-checkout-with-pay
 1. https://github.com/pay-rails/pay/blob/main/docs/7_webhooks.md
