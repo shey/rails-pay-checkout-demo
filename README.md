@@ -49,9 +49,13 @@ Run `stripe listen --forward-to localhost:3000/pay/webhooks/stripe`
 #### Components Involved Success
 1. app/services/payment_succeded_handler.rb
 1. config/initializers/pay.rb
+1. (no routing config required)
+
+#### After checkout
+Stripe redirects back to 'success_url' with 'session_id' query param from stripe.
 
 #### Payment Succeed
-Using the "stripe.invoice.payment_succeeded" as the safer event.
+Using the "stripe.invoice.payment_succeeded" to update user, etc.
 
 ## Related Articles
 1. [stripe-checkout](https://github.com/pay-rails/pay/blob/3f860ad490ce91b1b1d0ed3d11147d163b9fda80/docs/stripe/8_stripe_checkout.md)

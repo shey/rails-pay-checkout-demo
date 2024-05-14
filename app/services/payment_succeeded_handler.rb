@@ -11,7 +11,7 @@ class PaymentSucceededHandler
   end
 
   def adjust_user(pay_charge)
-    user = pay_charge.owner
+    user = pay_charge.customer.owner
     user.update!(updated_at: Time.zone.now)
   end
 end
