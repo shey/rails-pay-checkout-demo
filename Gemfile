@@ -77,3 +77,5 @@ gem "receipts", "~> 2.0"
 gem "stripe", "~> 10.12"
 
 gem "standardrb", "~> 1.0"
+
+gem "pg", "~> 1.5"
