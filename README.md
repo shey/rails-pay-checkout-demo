@@ -6,24 +6,13 @@
 ![pricing plans](docs/pricing-plans.png)
 
 ### Getting Started: Models and Config
-1. config/initializers/stripe.rb
-1. config/initializers/pay.rb
-1. app/models/user.rb
+1. [stripe.rb](config/initializers/stripe.rb)
+1. [pay.rb](config/initializers/pay.rb)
+1. [user.rb](app/models/user.rb)
 
 ### Pay
 #### Tables
-```bash
-
-bin/rails pay:install:migrations
-```
-
-####
-* pay_customers
-* pay_subscriptions
-* pay_charges
-* pay_webhooks
-* pay_merchants
-* pay_payment_methods
+`bin/rails pay:install:migrations`
 
 #### payment_processor
 By including pay_customer in the User model, the gem internally associates a User with the pay_customer model via the owner_type and owner_id fields.
@@ -45,15 +34,14 @@ Plans are a deprecated concept. Stripe has introduced [products](https://dashboa
 Run `stripe listen --forward-to localhost:3000/pay/webhooks/stripe`
 
 #### Components Involved In Checkout
-1. app/views/static/home.html.erb
-1. app/controllers/checkouts_controller.rb
-1. config/environments/development.rb
-1. app/services/stripe_checkout.rb
+1. [landing page](app/views/static/home.html.erb)
+1. [checkouts controller](app/controllers/checkouts_controller.rb)
+1. [development.rb](config/environments/development.rb)
+1. [stripe checkouk url generator](app/services/stripe_checkout.rb)
 
 #### Components Involved Success
-1. app/services/payment_succeded_handler.rb
-1. config/initializers/pay.rb
-1. (no routing config required)
+1. [payment event handler](app/services/payment_succeded_handler.rb)
+1. [pay.rb](config/initializers/pay.rb)
 
 #### After checkout
 Stripe redirects back to 'success_url' with 'session_id' query param from stripe.
