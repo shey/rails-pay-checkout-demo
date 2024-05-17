@@ -18,10 +18,10 @@
 ## The Pay Integration
 To complete the integration
 
-1. Set up your payment processor credentials and [initializers](initializers).
-1. Add the `pay_customer` the [User](pay_customer) Model.
-1. Request a Checkout URL and [Redirect](redirect) the User
-1. Handle Stripe [Events](events)
+1. Set up your payment processor credentials and [initializers](#initializers).
+1. Add the `pay_customer` the [User](#pay_customer) Model.
+1. Request a Checkout URL and [Redirect](#redirect) the User
+1. Handle Stripe [Events](#events)
 
 ### Set up your payment processor credentials and initializers  {#initializers}
 #### Stripe Credentials
@@ -99,7 +99,7 @@ class PaymentSucceededHandler
 end
 ```
 
-## Appendix
+## Appendix {#appendix}
 
 ### Relevant Files
 1. [user.rb](app/models/user.rb)
