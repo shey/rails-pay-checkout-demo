@@ -16,9 +16,14 @@
 ![Stripe Product Catalogue Page](docs/product-catalogue.png)
 
 ## The Pay Integration
-To complete the integration.
+To complete the integration
 
-### Set up your payment processor credentials and initializers.
+1. Set up your payment processor credentials and [initializers](initializers).
+1. Add the `pay_customer` the [User](pay_customer) Model.
+1. Request a Checkout URL and [Redirect](redirect) the User
+1. Handle Stripe [Events](events)
+
+### Set up your payment processor credentials and initializers  {#initializers}
 #### Stripe Credentials
 Follow Pay's [configuration instructions](https://github.com/pay-rails/pay/blob/main/docs/2_configuration.md#configuring-pay) to set up your Stripe credentials.
 
@@ -26,7 +31,7 @@ Follow Pay's [configuration instructions](https://github.com/pay-rails/pay/blob/
 1. Create or update the [stripe.rb](config/initializers/stripe.rb) initializer.
 1. Create the [pay.rb](config/initializers/pay.rb) initializer.
 
-### Add the `pay_customer` Class Method to the User Model
+### Add the `pay_customer` Class Method to the User Model {#pay_customer}
 
 1. **Generate the Pay Models**:
    - Run `bin/rails pay:install:migrations` to create the necessary Pay models.
@@ -44,7 +49,7 @@ Including `pay_customer` in the User model establishes an internal association b
 `payment_processor` is the entry point to Pay's functionality. By including pay_customer in the User model, the payment_processor method becomes available on all User instances, providing access to customer, subscription, and charge models.
 
 
-### Request a Checkout URL and Redirect the User
+### Request a Checkout URL and Redirect the User {#redirect}
 Using Pay, request a checkout URL from Stripe and then redirect the user to that URL. Once the transaction is complete, Stripe will return the user to the URL defined by `success_URL`, along with a `session_id`.
 
 #### Checkout URL Generator
@@ -60,7 +65,7 @@ def checkout
 end
 ```
 
-### Handle Stripe Events
+### Handle Stripe Events {#events}
 #### Stripe CLI
 The Pay Gem requires Stripe Webhooks to function properly. When building the Pay integration locally, you'll need to set up the [Stripe CLI](https://docs.stripe.com/stripe-cli) and have it running to forward the events to your app.
 
