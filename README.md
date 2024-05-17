@@ -99,7 +99,7 @@ class PaymentSucceededHandler
 end
 ```
 
-## Appendix {#appendix}
+## Appendix
 
 ### Relevant Files
 1. [user.rb](app/models/user.rb)
