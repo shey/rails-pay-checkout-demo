@@ -3,14 +3,14 @@
 ## Stripe Checkout
 **Stripe Checkout,** Stripe Checkout is a checkout flow where Stripe hosts the payments page that collects the credit card details.
 
-### The sequence of events for Stripe Checkout are:
-1. Create a checkout session.
-1. Redirect the user to Stripe's payment page.
-1. Handle the redirect back to the app.
-1. Manage the payment event webhook.
+### The (rough) sequence of events for Stripe Checkout are:
+1. A checkout session is created.
+1. The user is redirected to Stripe's payment page.
+1. The User is redirected back to the App.
+1. The app receives a "payment success" webhook from Stripe.
 
 ### Products and Prices
-Stripe has introduced [products](https://dashboard.stripe.com/products) and prices as a way to manage subscription billing. In this demo, each plan is its own product, and each product has a price and only [one price](app/controllers/checkouts_controller.rb).
+[Products](https://dashboard.stripe.com/products) and prices are used manage subscription billing. In this demo, each plan is its own product, and each product has a single [price](app/controllers/checkouts_controller.rb).
 
 ![Stripe Product Catalogue Page](docs/product-catalogue.png)
 
