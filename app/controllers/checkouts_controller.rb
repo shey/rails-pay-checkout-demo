@@ -22,9 +22,9 @@ class CheckoutsController < ApplicationController
 
   def plan_price_id_mapping
     {
-      hobby: "price_1Ow66SAWnWpxHPD5qEZoUi4O",
+      enterprice: "price_1Ow66SAWnWpxHPD5qEZoUi4O",
       professional: "price_1Ow66SAWnWpxHPD5K270wTji",
-      enterprise: "price_1Ow66RAWnWpxHPD5xV9xUCyD"
+      hobby: "price_1Ow66RAWnWpxHPD5xV9xUCyD"
     }
   end
 end
