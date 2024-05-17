@@ -23,7 +23,7 @@ class StripeCheckout
       line_items: stripe_price_id,
       success_url: success_url,
       billing_address_collection: "auto",
-      allow_promotion_codes: false,
+      allow_promotion_codes: false
     )
   end
 end
