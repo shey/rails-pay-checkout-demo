@@ -3,14 +3,15 @@
 ## Stripe Checkout
 **Stripe Checkout,** Stripe Checkout is a checkout flow where Stripe hosts the payments page that collects the credit card details.
 
-### The (rough) sequence of events for Stripe Checkout are:
+### The sequence of events for Stripe Checkout are:
 1. A checkout session is created.
 1. The user is redirected to Stripe's payment page.
-1. The User is redirected back to the App.
+1. The user completed a payment on Stripe's page.
+1. The user is redirected back to the app.
 1. The app receives a "payment success" webhook from Stripe.
 
 ### Products and Prices
-[Products](https://dashboard.stripe.com/products) and prices are used manage subscription billing. In this demo, each plan is its own product, and each product has a single [price](app/controllers/checkouts_controller.rb).
+[Products](https://dashboard.stripe.com/products) and prices are used manage subscription billing. In this app, each plan is its own product, and each product has a single [price](app/controllers/checkouts_controller.rb).
 
 ![Stripe Product Catalogue Page](docs/product-catalogue.png)
 
@@ -30,22 +31,55 @@ There are four primary integration points between Pay and Rails:
 Use Pay's configuration [instructions](https://github.com/pay-rails/pay/blob/main/docs/2_configuration.md#configuring-pay).
 
 ### User Model
-1.`bin/rails pay:install:migrations`
-1. [user.rb](app/models/user.rb)
+[user.rb](app/models/user.rb)
+
+#### Pay Tables
+`bin/rails pay:install:migrations`
 
 #### payment_processor
-By including pay_customer in the User model, the gem internally associates a User with the pay_customer model via the owner_type and owner_id fields.
+By including `pay_customer` in the User model, the Pay gem creates an internal association between the User and the pay_customer model. This is done using the `owner_type` and `owner_id` fields-- `payment_processor` serves as the entry point for all billing information.
 
 
 ### Redirect controller
-Stripe redirects back to 'success_url' with 'session_id' query param from stripe.
-
+#### Checkout Url Generator
+```ruby
+def checkout
+  user.payment_processor.checkout(
+    mode: "subscription",
+    line_items: stripe_price_id,
+    success_url: success_url,
+    billing_address_collection: "auto",
+    allow_promotion_codes: false,
+  )
+end
+```
+Stripe redirects back to 'success_url' with 'session_id' query param after the transaction is completed.
 
 ### Webhook
 
 #### Payment Succeed
-Using the "stripe.invoice.payment_succeeded" to update user, etc.
+Using the "stripe.invoice.payment_succeeded" [event](https://github.com/pay-rails/pay/tree/main/test/pay/stripe/webhooks) handler to update a user's attributes.
 
+```ruby
+class PaymentSucceededHandler
+  def call(event)
+    pay_charge = Pay::Stripe::Charge.sync(
+      event.data.object.charge,
+      stripe_account: event.try(:account)
+    )
+    return if pay_charge.nil?
+
+    adjust_user(pay_charge)
+  end
+
+  def adjust_user(pay_charge)
+    user = pay_charge.customer.owner
+    user.update!(updated_at: Time.zone.now)
+  end
+end
+```
+
+The code behind the Pay gem is very readable and easy to [understand](https://github.com/pay-rails/pay/blob/main/lib/pay/stripe/charge.rb).
 
 #### stripe-cli
 The [stripe-cli](https://docs.stripe.com/stripe-cli) is used to trigger events and test the webhook integration (locally). Download, install, and setup stripe-cli to work with your account.
