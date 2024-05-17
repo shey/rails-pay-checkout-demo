@@ -79,8 +79,6 @@ class PaymentSucceededHandler
 end
 ```
 
-The code behind the Pay gem is very readable and easy to [understand](https://github.com/pay-rails/pay/blob/main/lib/pay/stripe/charge.rb).
-
 #### stripe-cli
 The [stripe-cli](https://docs.stripe.com/stripe-cli) is used to trigger events and test the webhook integration (locally). Download, install, and setup stripe-cli to work with your account.
 
