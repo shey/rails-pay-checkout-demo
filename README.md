@@ -1,7 +1,8 @@
 # rails-pay-checkout-demo
 
 ## Stripe Checkout
-**Stripe Checkout,** Stripe Checkout is a checkout flow where Stripe hosts the payments page that collects the credit card details.
+**Stripe Checkout** Stripe Checkout is a checkout flow where Stripe hosts the payments page that collects the credit card details.
+
 
 ### The sequence of events for Stripe Checkout are:
 1. A checkout session is created.
