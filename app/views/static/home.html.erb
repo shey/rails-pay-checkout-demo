@@ -1,22 +1,25 @@
-<section class="p-2 max-w-screen-xl md:max-w-screen-md mx-auto mt-10">
+<section class="p-4 max-w-screen-xl md:max-w-screen-md mx-auto mt-10">
   <div class="text-center mb-8">
-    <h2 class="text-2xl font-bold">Pricing Plans</h2>
+    <h2 class="text-3xl font-bold text-pink-600">Pick Your Plan</h2>
   </div>
-  <div class="grid gap-6 md:grid-cols-3">
+  <div class="flex flex-wrap gap-8 justify-center">
     <!-- Card 1 -->
-    <div class="border border-gray-200 rounded-lg shadow p-3 text-justify">
-      <h3 class="text-lg font-semibold mb-4 text-center">Hobby</h3>
-      <%= link_to 'Get Started', checkouts_path(plan: "hobby"), class: "bg-blue-300 hover:bg-pink-300 text-white py-2 px-4 rounded", data: { turbo: false } %>
+    <div class="flex-1 min-w-[250px] max-w-xs border border-gray-200 rounded-lg shadow-lg p-6 bg-gradient-to-r from-blue-100 to-blue-200 text-center transform hover:scale-105 transition-transform duration-300">
+      <h3 class="text-xl font-semibold mb-2 text-gray-800">Hobby</h3>
+      <p class="text-gray-600 mb-4">Perfect for personal projects and small-scale apps.</p>
+      <%= link_to 'Get Started', checkouts_path(plan: "hobby"), class: "bg-blue-500 hover:bg-pink-500 text-white py-2 px-6 rounded-full transition-colors duration-300", data: { turbo: false } %>
     </div>
     <!-- Card 2 -->
-    <div class="border border-gray-200 rounded-lg shadow p-3 text-justify">
-      <h3 class="text-lg font-semibold mb-4 text-center">Professional</h3>
-      <%= link_to 'Get Started', checkouts_path(plan: "professional"), class: "bg-blue-300 hover:bg-pink-300 text-white py-2 px-4 rounded", data: { turbo: false } %>
+    <div class="flex-1 min-w-[250px] max-w-xs border border-gray-200 rounded-lg shadow-lg p-6 bg-gradient-to-r from-green-100 to-green-200 text-center transform hover:scale-105 transition-transform duration-300">
+      <h3 class="text-xl font-semibold mb-2 text-gray-800">Professional</h3>
+      <p class="text-gray-600 mb-4">Ideal for freelancers and growing businesses.</p>
+      <%= link_to 'Get Started', checkouts_path(plan: "professional"), class: "bg-green-500 hover:bg-pink-500 text-white py-2 px-6 rounded-full transition-colors duration-300", data: { turbo: false } %>
     </div>
     <!-- Card 3 -->
-    <div class="border border-gray-200 rounded-lg shadow p-3 text-justify">
-      <h3 class="text-lg font-semibold mb-4 text-center">Enterprise</h3>
-      <%= link_to 'Get Started', checkouts_path(plan: "enterprise"), class: "bg-blue-300 hover:bg-pink-300 text-white py-2 px-4 rounded", data: { turbo: false } %>
+    <div class="flex-1 min-w-[250px] max-w-xs border border-gray-200 rounded-lg shadow-lg p-6 bg-gradient-to-r from-purple-100 to-purple-200 text-center transform hover:scale-105 transition-transform duration-300">
+      <h3 class="text-xl font-semibold mb-2 text-gray-800">Enterprise</h3>
+      <p class="text-gray-600 mb-4">Best for large organizations with advanced needs.</p>
+      <%= link_to 'Get Started', checkouts_path(plan: "enterprise"), class: "bg-purple-500 hover:bg-pink-500 text-white py-2 px-6 rounded-full transition-colors duration-300", data: { turbo: false } %>
     </div>
   </div>
 </section>
