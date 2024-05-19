@@ -1,5 +1,7 @@
 # rails-pay-checkout-demo
 
+![Landing Page](docs/demo.png)
+
 ## Stripe Checkout
 **Stripe Checkout** Stripe Checkout is a checkout flow where Stripe hosts the payments page that collects the credit card details.
 
@@ -104,6 +106,7 @@ end
 
 ### Relevant Files
 1. [user.rb](app/models/user.rb)
+1. [app/controllers/static_controller.rb](app/controllers/static_controller.rb)
 1. [app/controllers/checkouts_controller.rb](app/controllers/checkouts_controller.rb?#L23)
 1. [config/environments/development.rb](config/environments/development.rb?#L78)
 1. [app/services/stripe_checkout.rb](app/services/stripe_checkout.rb)
