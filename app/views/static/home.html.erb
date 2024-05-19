@@ -1,3 +1,4 @@
+<!-- pricing section -->
 <section class="p-4 max-w-screen-xl md:max-w-screen-md mx-auto mt-10">
   <div class="text-center mb-8">
     <h2 class="text-3xl font-bold text-pink-600">Pick Your Plan</h2>
@@ -20,6 +21,26 @@
       <h3 class="text-xl font-semibold mb-2 text-gray-800">Enterprise</h3>
       <p class="text-gray-600 mb-4">Best for large organizations with advanced needs.</p>
       <%= link_to 'Get Started', checkouts_path(plan: "enterprise"), class: "bg-purple-500 hover:bg-pink-500 text-white py-2 px-6 rounded-full transition-colors duration-300", data: { turbo: false } %>
+    </div>
+  </div>
+</section>
+<!-- subscription details/user section -->
+<section class="p-4 max-w-screen-xl md:max-w-screen-md mx-auto mt-10">
+  <div class="text-center mb-8">
+    <h2 class="text-3xl font-bold text-pink-600">Your Subscription Details</h2>
+  </div>
+  <div class="flex flex-wrap gap-8 justify-center">
+    <div class="flex-1 min-w-[300px] max-w-md border border-gray-200 rounded-lg shadow-lg p-6 bg-white text-center">
+      <h3 class="text-xl font-semibold mb-2 text-gray-800">User</h3>
+      <% if @subscription.present? %>
+        <p class="text-gray-600 mb-4">You are currently subscribed to the <span class="font-semibold text-pink-600"><%= @subscription.name %></span> plan.</p>
+        <div class="text-left mb-4">
+          <p class="text-gray-600"><span class="font-semibold">Renewal Date:</span> <%= @subscription.current_period_end.strftime("%B %d, %Y") %></p>
+          <p class="text-gray-600"><span class="font-semibold">Price:</span> <span class="text-pink-600"><%= number_to_currency(@price.unit_amount / 100.0, unit: "$", precision: 2) %>/month</span></p>
+        </div>
+      <% else %>
+        <p class="text-gray-600 mb-4">You are not currently subscribed to any plan.</p>
+      <% end %>
     </div>
   </div>
 </section>
