@@ -1,5 +1,7 @@
 # rails-pay-checkout-demo
 
+## Stripe integration with Rails and the Pay gem for Subscription Billing
+
 ![Landing Page](docs/demo.png)
 
 ## Table of Contents
@@ -54,7 +56,7 @@ Follow Pay's [configuration instructions](https://github.com/pay-rails/pay/blob/
 ### Add the `pay_customer` Class Method to the User Model {#pay_customer}
 
 1. **Generate the Pay Models**:
-   - Run `bin/rails pay:install:migrations` to create the necessary Pay models.
+   - Pay is already installed. For a fresh app, run `bin/rails pay:install:migrations` to create the necessary Pay models.
 
 2. **Update the User Model**:
    - Add `pay_customer` to the User model:
