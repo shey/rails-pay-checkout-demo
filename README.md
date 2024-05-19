@@ -1,8 +1,27 @@
 # rails-pay-checkout-demo
 
+![Landing Page](docs/demo.png)
+
+## Table of Contents
+- [Stripe Checkout](#stripe-checkout)
+  - [The sequence of events for Stripe Checkout are](#the-sequence-of-events-for-stripe-checkout-are)
+  - [Products and Prices](#products-and-prices)
+- [The Pay Integration](#the-pay-integration)
+  - [Set up your payment processor credentials and initializers](#set-up-your-payment-processor-credentials-and-initializers)
+    - [Stripe Credentials](#stripe-credentials)
+    - [Initializers](#initializers)
+  - [Add the `pay_customer` Class Method to the User Model](#add-the-pay_customer-class-method-to-the-user-model)
+  - [Request a Checkout URL and Redirect the User](#request-a-checkout-url-and-redirect-the-user)
+    - [Checkout URL Generator](#checkout-url-generator)
+  - [Handle Stripe Events](#handle-stripe-events)
+    - [Stripe CLI](#stripe-cli)
+    - [The Payment Succeed Event](#the-payment-succeed-event)
+- [Appendix](#appendix)
+  - [Relevant Files](#relevant-files)
+- [Related Articles](#related-articles)
+
 ## Stripe Checkout
 **Stripe Checkout** Stripe Checkout is a checkout flow where Stripe hosts the payments page that collects the credit card details.
-
 
 ### The sequence of events for Stripe Checkout are:
 1. A checkout session is created.
@@ -104,6 +123,7 @@ end
 
 ### Relevant Files
 1. [user.rb](app/models/user.rb)
+1. [app/controllers/static_controller.rb](app/controllers/static_controller.rb)
 1. [app/controllers/checkouts_controller.rb](app/controllers/checkouts_controller.rb?#L23)
 1. [config/environments/development.rb](config/environments/development.rb?#L78)
 1. [app/services/stripe_checkout.rb](app/services/stripe_checkout.rb)
