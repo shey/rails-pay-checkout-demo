@@ -1,4 +1,4 @@
 User.create!(
-  name: 'John Doe',
-  email: 'john@pay.test',
+  name: Faker::Name.name,
+  email: Faker::Internet.email
 )
