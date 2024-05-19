@@ -1,6 +1,5 @@
 # rails-pay-checkout-demo
-
-## Stripe integration with Rails and the Pay gem for Subscription Billing
+Stripe integration with Rails and the Pay gem for Subscription Billing
 
 ![Landing Page](docs/demo.png)
 
