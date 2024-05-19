@@ -1,5 +1,6 @@
 # rails-pay-checkout-demo
-Stripe integration with Rails and the Pay gem for Subscription Billing
+
+Stripe integration with Rails and the Pay gem for Subscription Billing.
 
 ![Landing Page](docs/demo.png)
 
@@ -52,7 +53,7 @@ Follow Pay's [configuration instructions](https://github.com/pay-rails/pay/blob/
 1. Create or update the [stripe.rb](config/initializers/stripe.rb) initializer.
 1. Create the [pay.rb](config/initializers/pay.rb) initializer.
 
-### Add the `pay_customer` Class Method to the User Model {#pay_customer}
+### Add the `pay_customer` Class Method to the User Model
 
 1. **Generate the Pay Models**:
    - Pay is already installed. For a fresh app, run `bin/rails pay:install:migrations` to create the necessary Pay models.
@@ -70,7 +71,7 @@ Including `pay_customer` in the User model establishes an internal association b
 `payment_processor` is the entry point to Pay's functionality. By including pay_customer in the User model, the payment_processor method becomes available on all User instances, providing access to customer, subscription, and charge models.
 
 
-### Request a Checkout URL and Redirect the User {#redirect}
+### Request a Checkout URL and Redirect the User
 Using Pay, request a checkout URL from Stripe and then redirect the user to that URL. Once the transaction is complete, Stripe will return the user to the URL defined by `success_URL`, along with a `session_id`.
 
 #### Checkout URL Generator
@@ -86,7 +87,7 @@ def checkout
 end
 ```
 
-### Handle Stripe Events {#events}
+### Handle Stripe Events
 #### Stripe CLI
 The Pay Gem requires Stripe Webhooks to function properly. When building the Pay integration locally, you'll need to set up the [Stripe CLI](https://docs.stripe.com/stripe-cli) and have it running to forward the events to your app.
 
@@ -132,7 +133,7 @@ end
 1. [config/initializers/pay.rb](config/initializers/pay.rb)
 1. [config/initializers/stripe.rb](config/initializers/stripe.rb)
 
-## Related Articles
-1. [stripe-checkout](https://github.com/pay-rails/pay/blob/3f860ad490ce91b1b1d0ed3d11147d163b9fda80/docs/stripe/8_stripe_checkout.md)
+### Related Articles
+1. [Stripe Checkout](https://github.com/pay-rails/pay/blob/main/docs/stripe/8_stripe_checkout.md)
 1. [Routes and Webhooks](https://github.com/pay-rails/pay/blob/main/docs/7_webhooks.md)
 1. [Stripe Webhooks](https://github.com/pay-rails/pay/blob/main/docs/stripe/5_webhooks.md)
