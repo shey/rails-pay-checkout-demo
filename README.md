@@ -33,7 +33,7 @@ Stripe integration with Rails and the Pay gem for Subscription Billing.
 1. The app receives a "payment success" webhook from Stripe.
 
 ### Products and Prices
-[Products](https://dashboard.stripe.com/products) and prices are used manage subscription billing. In this app, each plan is its own product, and each product has a single [price](app/controllers/checkouts_controller.rb).
+[Products](https://dashboard.stripe.com/products) and prices are used for subscription billing in lieu of plans. In this app, each "plan" is its own product, and each product has a single [price](app/controllers/checkouts_controller.rb).
 
 ![Stripe Product Catalogue Page](docs/product-catalogue.png)
 
