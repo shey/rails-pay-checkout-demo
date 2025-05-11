@@ -2,12 +2,12 @@ class CheckoutsController < ApplicationController
   before_action :set_price_id, only: %i[show]
 
   def show
-    redirect_to stripe_checkout_url, allow_other_host: true, status: :see_other
+    redirect_to checkout_url, allow_other_host: true, status: :see_other
   end
 
   private
 
-  def stripe_checkout_url
+  def checkout_url
     StripeCheckout.new(user, @stripe_price_id).url
   end
 
@@ -16,11 +16,14 @@ class CheckoutsController < ApplicationController
   end
 
   def set_price_id
-    plan_name = params[:plan]
-    @stripe_price_id = plan_price_id_mapping[plan_name.to_sym]
+    @stripe_price_id = price_id_map[plan_name]
   end
 
-  def plan_price_id_mapping
+  def plan_name
+    params[:plan].to_sym
+  end
+
+  def price_id_map
     {
       enterprise: "price_1Ow66SAWnWpxHPD5qEZoUi4O",
       professional: "price_1Ow66SAWnWpxHPD5K270wTji",
