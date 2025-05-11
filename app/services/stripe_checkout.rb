@@ -2,13 +2,10 @@ class StripeCheckout
   include Rails.application.routes.url_helpers
 
   attr_reader :user, :stripe_price_id
+
   def initialize(user, stripe_price_id)
     @user = user
     @stripe_price_id = stripe_price_id
-  end
-
-  def success_url
-    root_url
   end
 
   def url
@@ -16,6 +13,10 @@ class StripeCheckout
   end
 
   private
+
+  def success_url
+    root_url
+  end
 
   def checkout
     user.payment_processor.checkout(
