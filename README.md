@@ -5,6 +5,8 @@ Stripe integration with Rails and the Pay gem for Subscription Billing.
 ![Landing Page](docs/demo.png)
 
 ## Table of Contents
+
+- [Running The App](#running-the-app)
 - [Stripe Checkout](#stripe-checkout)
   - [The sequence of events for Stripe Checkout are](#the-sequence-of-events-for-stripe-checkout-are)
   - [Products and Prices](#products-and-prices)
@@ -22,10 +24,25 @@ Stripe integration with Rails and the Pay gem for Subscription Billing.
   - [Relevant Files](#relevant-files)
 - [Related Articles](#related-articles)
 
+## Running the App
+
+```bash
+bin/setup     # Installs gems, creates the database, and runs seeds
+bin/dev       # Starts the Rails server with foreman (Procfile.dev)
+```
+
+Note: You’ll need the Stripe CLI running for webhooks to be received
+
+```bash
+$ stripe listen --forward-to localhost:3000/pay/webhooks/stripe
+```
+
 ## Stripe Checkout
+
 **Stripe Checkout** Stripe Checkout is a checkout flow where Stripe hosts the payments page that collects the credit card details.
 
 ### The sequence of events for Stripe Checkout are:
+
 1. A checkout session is created.
 1. The user is redirected to Stripe's payment page.
 1. The user completed a payment on Stripe's page.
@@ -33,11 +50,13 @@ Stripe integration with Rails and the Pay gem for Subscription Billing.
 1. The app receives a "payment success" webhook from Stripe.
 
 ### Products and Prices
-[Products](https://dashboard.stripe.com/products) and prices are used for subscription billing in lieu of plans. In this app, each "plan" is its own product, and each product has a single [price](app/controllers/checkouts_controller.rb).
+
+[Products](https://dashboard.stripe.com/products) and prices are used manage subscription billing. In this app, each plan is its own product, and each product has a single [price](app/controllers/checkouts_controller.rb).
 
 ![Stripe Product Catalogue Page](docs/product-catalogue.png)
 
 ## The Pay Integration
+
 To complete the integration
 
 1. Set up your payment processor credentials and [initializers](#initializers).
@@ -45,17 +64,21 @@ To complete the integration
 1. Request a Checkout URL and [Redirect](#redirect) the User
 1. Handle Stripe [Events](#events)
 
-### Set up your payment processor credentials and initializers  {#initializers}
+### Set up your payment processor credentials and initializers {#initializers}
+
 #### Stripe Credentials
+
 Follow Pay's [configuration instructions](https://github.com/pay-rails/pay/blob/main/docs/2_configuration.md#configuring-pay) to set up your Stripe credentials.
 
 #### Initializers
+
 1. Create or update the [stripe.rb](config/initializers/stripe.rb) initializer.
 1. Create the [pay.rb](config/initializers/pay.rb) initializer.
 
 ### Add the `pay_customer` Class Method to the User Model
 
 1. **Generate the Pay Models**:
+
    - Pay is already installed. For a fresh app, run `bin/rails pay:install:migrations` to create the necessary Pay models.
 
 2. **Update the User Model**:
@@ -70,11 +93,12 @@ Including `pay_customer` in the User model establishes an internal association b
 
 `payment_processor` is the entry point to Pay's functionality. By including pay_customer in the User model, the payment_processor method becomes available on all User instances, providing access to customer, subscription, and charge models.
 
-
 ### Request a Checkout URL and Redirect the User
+
 Using Pay, request a checkout URL from Stripe and then redirect the user to that URL. Once the transaction is complete, Stripe will return the user to the URL defined by `success_URL`, along with a `session_id`.
 
 #### Checkout URL Generator
+
 ```ruby
 def checkout
   user.payment_processor.checkout(
@@ -88,7 +112,9 @@ end
 ```
 
 ### Handle Stripe Events
+
 #### Stripe CLI
+
 The Pay Gem requires Stripe Webhooks to function properly. When building the Pay integration locally, you'll need to set up the [Stripe CLI](https://docs.stripe.com/stripe-cli) and have it running to forward the events to your app.
 
 ```bash
@@ -100,6 +126,7 @@ Update your stripe credentials to include the webhook signing secreted generated
 ![stripe events](docs/events.png)
 
 #### The Payment Succeed Event
+
 When Stripe processes a payment successfully, it triggers the invoice.payment_succeeded [event] (https://github.com/pay-rails/pay/tree/main/test/pay/stripe/webhooks). Use this event to initiate other workflows in Rails. For instance, access a paid feature or a custom receipt.
 
 ```ruby
@@ -124,6 +151,7 @@ end
 ## Appendix
 
 ### Relevant Files
+
 1. [user.rb](app/models/user.rb)
 1. [app/controllers/static_controller.rb](app/controllers/static_controller.rb)
 1. [app/controllers/checkouts_controller.rb](app/controllers/checkouts_controller.rb?#L23)
@@ -134,6 +162,7 @@ end
 1. [config/initializers/stripe.rb](config/initializers/stripe.rb)
 
 ### Related Articles
+
 1. [Stripe Checkout](https://github.com/pay-rails/pay/blob/main/docs/stripe/8_stripe_checkout.md)
 1. [Routes and Webhooks](https://github.com/pay-rails/pay/blob/main/docs/7_webhooks.md)
 1. [Stripe Webhooks](https://github.com/pay-rails/pay/blob/main/docs/stripe/5_webhooks.md)
